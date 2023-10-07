@@ -26,7 +26,7 @@ namespace DailyQuestionApp.Controllers
         }
 
         // GET: api/users/{id}
-        [HttpGet("{id}")]
+        [HttpGet("{{id}}")]
         public async Task<IActionResult> GetUser(int id)
         {
             var user = await _context.Users.FindAsync(id);
@@ -48,7 +48,7 @@ namespace DailyQuestionApp.Controllers
         }
 
         // PUT: api/users/{id}
-        [HttpPut("{id}")]
+        [HttpPut("{{id}}")]
         public async Task<IActionResult> UpdateUser(int id, User user)
         {
             if (id != user.Id)
@@ -78,7 +78,7 @@ namespace DailyQuestionApp.Controllers
         }
 
         // DELETE: api/users/{id}
-        [HttpDelete("{id}")]
+        [HttpDelete("{{id}}")]
         public async Task<IActionResult> DeleteUser(int id)
         {
             var user = await _context.Users.FindAsync(id);

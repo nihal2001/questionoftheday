@@ -26,7 +26,7 @@ namespace DailyQuestionApp.Controllers
         }
 
         // GET: api/answers/{id}
-        [HttpGet("{id}")]
+        [HttpGet("{{id}}")]
         public async Task<IActionResult> GetAnswer(int id)
         {
             var answer = await _context.Answers.FindAsync(id);
@@ -48,7 +48,7 @@ namespace DailyQuestionApp.Controllers
         }
 
         // PUT: api/answers/{id}
-        [HttpPut("{id}")]
+        [HttpPut("{{id}}")]
         public async Task<IActionResult> UpdateAnswer(int id, Answer answer)
         {
             if (id != answer.Id)
@@ -78,7 +78,7 @@ namespace DailyQuestionApp.Controllers
         }
 
         // DELETE: api/answers/{id}
-        [HttpDelete("{id}")]
+        [HttpDelete("{{id}}")]
         public async Task<IActionResult> DeleteAnswer(int id)
         {
             var answer = await _context.Answers.FindAsync(id);

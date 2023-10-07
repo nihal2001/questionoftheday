@@ -3305,25 +3305,24 @@
     ]
   },
   "packageFolders": {
-    "/Users/nihal/.nuget/packages/": {}
+    "/Users/dargus/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/nihal/Code/questionoftheday/DailyQuestionApp/DailyQuestionApp.csproj",
+      "projectUniqueName": "/Users/dargus/Documents/questionoftheday/DailyQuestionApp/DailyQuestionApp.csproj",
       "projectName": "DailyQuestionApp",
-      "projectPath": "/Users/nihal/Code/questionoftheday/DailyQuestionApp/DailyQuestionApp.csproj",
-      "packagesPath": "/Users/nihal/.nuget/packages/",
-      "outputPath": "/Users/nihal/Code/questionoftheday/DailyQuestionApp/obj/",
+      "projectPath": "/Users/dargus/Documents/questionoftheday/DailyQuestionApp/DailyQuestionApp.csproj",
+      "packagesPath": "/Users/dargus/.nuget/packages/",
+      "outputPath": "/Users/dargus/Documents/questionoftheday/DailyQuestionApp/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/nihal/.nuget/NuGet/NuGet.Config"
+        "/Users/dargus/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
-        "/usr/local/share/dotnet/sdk/7.0.304/Sdks/Microsoft.NET.Sdk.Web/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -3380,7 +3379,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.304/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.401/RuntimeIdentifierGraph.json"
       }
     }
   }

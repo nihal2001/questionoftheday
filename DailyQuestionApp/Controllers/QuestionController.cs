@@ -26,7 +26,7 @@ namespace DailyQuestionApp.Controllers
         }
 
         // GET: api/questions/{id}
-        [HttpGet("{id}")]
+        [HttpGet("{{id}}")]
         public async Task<IActionResult> GetQuestion(int id)
         {
             var question = await _context.Questions.FindAsync(id);
@@ -39,7 +39,7 @@ namespace DailyQuestionApp.Controllers
 
         // GET: api/questions/date/{date}
         // date Format: yyyy-MM-dd  example: 2023-09-08
-        [HttpGet("date/{date:datetime:regex(\\d{4}-\\d{2}-\\d{2})}")]
+        [HttpGet("date/{{date:datetime}}")]
         public async Task<IActionResult> GetQuestionByDate(DateTime date)
         {
             var question = await _context.Questions.FirstOrDefaultAsync(q => q.Date.Date == date.Date);
