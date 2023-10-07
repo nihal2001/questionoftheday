@@ -1,4 +1,5 @@
 import React from 'react';
+import { TouchableOpacity } from 'react-native';
 import { StyleSheet, View, Text, FlatList, SafeAreaView } from 'react-native';
 
 const questionsData = [
@@ -18,17 +19,21 @@ const questionsData = [
     // ... Add other questions here
 ];
 
-const QuestionsScreen = () => {
+const QuestionsScreen = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             <FlatList
                 data={questionsData}
                 keyExtractor={(item) => item.date}
+                // In the QuestionsScreen.js renderItem function
                 renderItem={({ item }) => (
-                    <View style={styles.questionContainer}>
-                        <Text style={styles.dateText}>{item.date}</Text>
-                        <Text style={styles.questionText}>{item.question}</Text>
-                    </View>
+                <TouchableOpacity 
+                    style={styles.questionContainer}
+                    onPress={() => navigation.navigate('Answer', { question: item })}
+                >
+                    <Text style={styles.dateText}>{item.date}</Text>
+                    <Text style={styles.questionText}>{item.question}</Text>
+                </TouchableOpacity>
                 )}
             />
         </SafeAreaView>
