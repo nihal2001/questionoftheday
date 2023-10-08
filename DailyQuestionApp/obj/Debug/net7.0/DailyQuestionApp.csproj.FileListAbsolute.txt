@@ -156,3 +156,9 @@
 /Users/dargus/Documents/questionoftheday/DailyQuestionApp/obj/Debug/net7.0/DailyQuestionApp.pdb
 /Users/dargus/Documents/questionoftheday/DailyQuestionApp/obj/Debug/net7.0/DailyQuestionApp.genruntimeconfig.cache
 /Users/dargus/Documents/questionoftheday/DailyQuestionApp/obj/Debug/net7.0/ref/DailyQuestionApp.dll
+/Users/nihal/Code/questionoftheday/DailyQuestionApp/bin/Debug/net7.0/Frontend/app.json
+/Users/nihal/Code/questionoftheday/DailyQuestionApp/bin/Debug/net7.0/Frontend/ios/frontend/Images.xcassets/AppIcon.appiconset/Contents.json
+/Users/nihal/Code/questionoftheday/DailyQuestionApp/bin/Debug/net7.0/Frontend/ios/frontend/Images.xcassets/Contents.json
+/Users/nihal/Code/questionoftheday/DailyQuestionApp/bin/Debug/net7.0/Frontend/package-lock.json
+/Users/nihal/Code/questionoftheday/DailyQuestionApp/bin/Debug/net7.0/Frontend/package.json
+/Users/nihal/Code/questionoftheday/DailyQuestionApp/bin/Debug/net7.0/Frontend/tsconfig.json
