@@ -37,19 +37,24 @@ namespace DailyQuestionApp.Controllers
             return Ok(question);
         }
 
-        // GET: api/questions/date/{date}
-        // date Format: yyyy-MM-dd  example: 2023-09-08
-        [HttpGet("date/{{date:datetime}}")]
-        public async Task<IActionResult> GetQuestionByDate(DateTime date)
+        // TODO: order by date descending and get first
+        // GET: api/questions/latest
+        // get latest question
+        // ex: { id: 1, date: "10/09/23", content: "hi?" }
+        [HttpGet("latest")]
+        public async Task<IActionResult> GetLatestQuestion()
         {
-            var question = await _context.Questions.FirstOrDefaultAsync(q => q.Date.Date == date.Date);
-            if (question == null)
-            {
-                return NotFound();
-            }
+            var question = await _context.Questions.FirstOrDefaultAsync();
             return Ok(question);
         }
 
+        // TODO: Implement function
+        // GET: api/questions/user/{userId}
+        // get all questions and answers for a user if user has answered
+        // ex: { questions: [  { id: 1, date: "10/09/23", question: "hi?", answer: "hi" }, ... ] }
+        // [HttpGet("user/{userId}")]
+        // public async Task<IActionResult> GetAllQuestionsForUser(int userId)
+        // {}
 
         /*
         // POST: api/questions

@@ -18,13 +18,6 @@ namespace DailyQuestionApp.Controllers
             _context = context;
         }
 
-        // GET: api/answers
-        [HttpGet]
-        public async Task<IActionResult> GetAllAnswers()
-        {
-            return Ok(await _context.Answers.ToListAsync());
-        }
-
         // GET: api/answers/{id}
         [HttpGet("{{id}}")]
         public async Task<IActionResult> GetAnswer(int id)
