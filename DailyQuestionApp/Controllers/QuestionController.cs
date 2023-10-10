@@ -26,7 +26,7 @@ namespace DailyQuestionApp.Controllers
         }
 
         // GET: api/questions/{id}
-        [HttpGet("{{id}}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetQuestion(int id)
         {
             var question = await _context.Questions.FindAsync(id);
@@ -52,9 +52,30 @@ namespace DailyQuestionApp.Controllers
         // GET: api/questions/user/{userId}
         // get all questions and answers for a user if user has answered
         // ex: { questions: [  { id: 1, date: "10/09/23", question: "hi?", answer: "hi" }, ... ] }
-        // [HttpGet("user/{userId}")]
-        // public async Task<IActionResult> GetAllQuestionsForUser(int userId)
-        // {}
+        [HttpGet("user/{userId}")]
+        public async Task<IActionResult> GetAllQuestionsForUser(int userId)
+        {
+            var userQuestions = await (
+                from question in _context.Questions
+                join answer in _context.Answers on question.Id equals answer.QuestionId into qaGroup
+                from qa in qaGroup.DefaultIfEmpty()
+                where qa.UserId == userId
+                select new 
+                {
+                    id = question.Id,
+                    date = question.Date,
+                    question = question.Content,
+                    answer = qa == null ? null : qa.ResponseText
+                }
+            ).ToListAsync();
+
+            if (!userQuestions.Any())
+            {
+                return NotFound();
+            }
+
+            return Ok(new { questions = userQuestions });
+        }
 
         /*
         // POST: api/questions
