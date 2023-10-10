@@ -40,11 +40,10 @@ namespace DailyQuestionApp.Controllers
         // TODO: order by date descending and get first
         // GET: api/questions/latest
         // get latest question
-        // ex: { id: 1, date: "10/09/23", content: "hi?" }
         [HttpGet("latest")]
         public async Task<IActionResult> GetLatestQuestion()
         {
-            var question = await _context.Questions.FirstOrDefaultAsync();
+            var question = await _context.Questions.OrderByDescending(q => q.Date).FirstOrDefaultAsync();
             return Ok(question);
         }
 
