@@ -56,9 +56,9 @@ namespace DailyQuestionApp.Controllers
         {
             var userQuestions = await (
                 from question in _context.Questions
-                join answer in _context.Answers on question.Id equals answer.QuestionId into qaGroup
+                join answer in _context.Answers on new { QId = question.Id, UId = userId } 
+                    equals new { QId = answer.QuestionId, UId = answer.UserId } into qaGroup
                 from qa in qaGroup.DefaultIfEmpty()
-                where qa.UserId == userId
                 select new 
                 {
                     id = question.Id,
@@ -67,6 +67,7 @@ namespace DailyQuestionApp.Controllers
                     answer = qa == null ? null : qa.ResponseText
                 }
             ).ToListAsync();
+
 
             if (!userQuestions.Any())
             {
