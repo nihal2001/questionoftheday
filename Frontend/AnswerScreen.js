@@ -23,6 +23,7 @@ const AnswerScreen = ({ navigation, route }) => {
     };
     return (
         <SafeAreaView style={styles.container}>
+            <Text style={styles.questionText}>{question}</Text>
             <TextInput
                 style={styles.answerInput}
                 value={answerText}
