@@ -7,8 +7,11 @@ const AnswerScreen = ({ navigation, route }) => {
     const { question } = route.params; // Get the question data from the route params
     const [answerText, setAnswerText] = useState('');
 
+    
+
     useEffect(() => {
         const fetchSavedAnswer = async () => {
+            console.log(question);
             const savedAnswer = await AsyncStorage.getItem(`answer_${question.date}`);
             if (savedAnswer) {
                 setAnswerText(savedAnswer);
