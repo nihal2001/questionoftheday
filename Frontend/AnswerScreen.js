@@ -7,8 +7,6 @@ const AnswerScreen = ({ navigation, route }) => {
     const { question, date, answer } = route.params; // Get the question data from the route params
     const [answerText, setAnswerText] = useState('');
 
-    
-
     useEffect(() => {
         const fetchSavedAnswer = async () => {
             console.log(date);
@@ -27,16 +25,24 @@ const AnswerScreen = ({ navigation, route }) => {
     return (
         <SafeAreaView style={styles.container}>
             <Text style={styles.questionText}>{question}</Text>
-            <TextInput
-                style={styles.answerInput}
-                value={answerText}
-                onChangeText={setAnswerText}
-                placeholder="Write your answer here..."
-                multiline={true} // Allow multiple lines
-                numberOfLines={4} // Initially show 4 lines
+            <View
+              style={{
+                borderBottomColor: 'black',
+                borderBottomWidth: StyleSheet.hairlineWidth,
+              }}
             />
-            <Button title="Save" onPress={handleSave} />
-            <Button title="Back" onPress={() => navigation.goBack()} />
+            <TextInput
+              style={styles.answerInput}
+              value={answerText}
+              onChangeText={setAnswerText}
+              placeholder="Write your answer here..."
+              multiline={true} // Allow multiple lines
+              numberOfLines={4} // Initially show 4 lines
+            />
+            <View style={styles.buttonContainer}>
+              <Button title="Back" onPress={() => navigation.goBack()} />
+              <Button title="Save" onPress={handleSave} />
+            </View>
         </SafeAreaView>
     );
 };
@@ -44,18 +50,24 @@ const AnswerScreen = ({ navigation, route }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
+    margin: 10,
+    backgroundColor: 'white'
   },
   questionText: {
-    fontSize: 18,
-    marginBottom: 10,
+    fontSize: 24,
+    padding: 10,
+    textAlign: 'center',
   },
   answerInput: {
-    borderWidth: 1,
-    borderColor: '#ddd',
+    fontSize: 24,
+    paddingTop: 10,
     padding: 10,
     fontSize: 16,
     flex: 1,
+  },
+  buttonContainer: {
+    flexDirection: 'row', // Horizontal layout
+    justifyContent: 'space-between'
   },
 });
 
