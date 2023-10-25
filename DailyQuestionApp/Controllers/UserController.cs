@@ -25,6 +25,30 @@ namespace DailyQuestionApp.Controllers
             return Ok(await _context.Users.ToListAsync());
         }
 
+    // POST: api/users/getOrCreate
+    [HttpPost("getOrCreate")]
+    public async Task<ActionResult<int>> GetOrCreateUser(string username)
+    {
+        if (string.IsNullOrEmpty(username))
+        {
+            return BadRequest("Username is required");
+        }
+
+        // Attempt to find the user by the provided username
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Name == username);
+
+        if (user == null)
+        {
+            
+            // User with that username doesn't exist, so create a new one
+            user = new User { Name = username };
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+        }
+
+        return Ok(user.Id);
+    }
+
         // GET: api/users/{id}
         [HttpGet("{{id}}")]
         public async Task<IActionResult> GetUser(int id)

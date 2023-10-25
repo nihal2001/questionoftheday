@@ -4,12 +4,15 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const AnswerScreen = ({ navigation, route }) => {
-    const { question } = route.params; // Get the question data from the route params
+    const { question, date, answer } = route.params; // Get the question data from the route params
     const [answerText, setAnswerText] = useState('');
+
+    
 
     useEffect(() => {
         const fetchSavedAnswer = async () => {
-            const savedAnswer = await AsyncStorage.getItem(`answer_${question.date}`);
+            console.log(`answer_${date}`);
+            const savedAnswer = await AsyncStorage.getItem(`answer_${date}`);
             if (savedAnswer) {
                 setAnswerText(savedAnswer);
             }
@@ -19,10 +22,11 @@ const AnswerScreen = ({ navigation, route }) => {
     }, [question]);
 
     const handleSave = async () => {
-        await AsyncStorage.setItem(`answer_${question.date}`, answerText);
+        await AsyncStorage.setItem(`answer_${date}`, answerText);
     };
     return (
         <SafeAreaView style={styles.container}>
+            <Text style={styles.questionText}>{question}</Text>
             <TextInput
                 style={styles.answerInput}
                 value={answerText}
