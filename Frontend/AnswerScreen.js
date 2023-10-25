@@ -11,7 +11,7 @@ const AnswerScreen = ({ navigation, route }) => {
 
     useEffect(() => {
         const fetchSavedAnswer = async () => {
-            console.log(date);
+            console.log(`answer_${date}`);
             const savedAnswer = await AsyncStorage.getItem(`answer_${date}`);
             if (savedAnswer) {
                 setAnswerText(savedAnswer);
