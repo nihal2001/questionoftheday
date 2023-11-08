@@ -25,6 +25,43 @@ namespace DailyQuestionApp.Controllers
             return Ok(await _context.Questions.ToListAsync());
         }
 
+        [HttpGet("countDate")]
+        public IActionResult GetQuestionsByCountFromDate([FromQuery] DateTime date, [FromQuery] int number)
+        {
+            // Assuming _context is your database context and Question is your entity.
+            var questions = _context.Questions
+                                    .Where(q => q.Date < date) // Filter questions from this date forward
+                                    .OrderByDescending(q => q.Date) // Order by date, most recent first
+                                    .Take(number) // Take the specified number of questions
+                                    .ToList(); // Execute the query and convert to a list
+
+            if (questions == null || !questions.Any())
+            {
+                return NotFound("No questions found.");
+            }
+
+            return Ok(questions); // Return the questions
+        }
+
+        [HttpGet("countId")]
+        public IActionResult GetQuestionsByCountFromID([FromQuery] int id, [FromQuery] int number)
+        {
+            // Assuming _context is your database context and Question is your entity.
+            var questions = _context.Questions
+                                    .Where(q => q.Id <= id) // Filter questions from this date forward
+                                    .OrderByDescending(q => q.Date) // Order by date, most recent first
+                                    .Take(number) // Take the specified number of questions
+                                    .ToList(); // Execute the query and convert to a list
+
+            if (questions == null || !questions.Any())
+            {
+                return NotFound("No questions found.");
+            }
+
+            return Ok(questions); // Return the questions
+        }
+
+
         // GET: api/questions/{id}
         [HttpGet("{id}")]
         public async Task<IActionResult> GetQuestion(int id)
@@ -35,7 +72,7 @@ namespace DailyQuestionApp.Controllers
                 return NotFound();
             }
             return Ok(question);
-        }
+        }   
 
         // TODO: order by date descending and get first
         // GET: api/questions/latest
@@ -56,10 +93,10 @@ namespace DailyQuestionApp.Controllers
         {
             var userQuestions = await (
                 from question in _context.Questions
-                join answer in _context.Answers on new { QId = question.Id, UId = userId } 
+                join answer in _context.Answers on new { QId = question.Id, UId = userId }
                     equals new { QId = answer.QuestionId, UId = answer.UserId } into qaGroup
                 from qa in qaGroup.DefaultIfEmpty()
-                select new 
+                select new
                 {
                     id = question.Id,
                     date = question.Date,
@@ -76,6 +113,18 @@ namespace DailyQuestionApp.Controllers
 
             return Ok(new { questions = userQuestions });
         }
+
+
+
+
+
+
+
+
+
+
+
+
 
         /*
         // POST: api/questions
